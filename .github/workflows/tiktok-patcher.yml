@@ -408,7 +408,7 @@ jobs:
               cp "$RAW_BASE" "$RAW_MERGED"
             fi
 
-            java -jar revanced-cli.jar patch "$RAW_MERGED" \
+            java -jar revanced-cli.jar patch \
               -p "$PATCH_BUNDLE" \
               -b \
               -o "$MERGED_APK" \
@@ -421,7 +421,8 @@ jobs:
               -e "Remember clear display" \
               -e "Show seekbar" \
               -e "Playback speed" \
-              -e "Disable login requirement" 2>&1 | tee "$PATCH_LOG"
+              -e "Disable login requirement" \
+              "$RAW_MERGED" 2>&1 | tee "$PATCH_LOG"
 
             # revanced-cli still writes an APK when individual patches fail. Never ship a build
             # without the settings menu or the extension hooks (unnamed dependency patches);
