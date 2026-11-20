@@ -4,11 +4,14 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         google()
+        mavenCentral()
+
         maven {
             name = "githubPackages"
             url = uri("https://maven.pkg.github.com/revanced/revanced-patches-gradle-plugin")
             credentials(PasswordCredentials::class)
         }
+
         // TODO: Remove once https://github.com/google/protobuf-gradle-plugin/pull/797 is merged.
         maven { url = uri("https://jitpack.io") }
     }
